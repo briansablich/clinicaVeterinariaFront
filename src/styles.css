@@ -1,1 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+.hoverLink:hover{
+    background-color: lightcoral;
+    text-decoration: double;
+    transition: all background-color 0.3s;
+    color: blue !important;
+}
+
+.hoverLink{
+    border-radius: 10%;
+}
