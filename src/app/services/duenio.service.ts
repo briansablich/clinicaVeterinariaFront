@@ -7,8 +7,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DuenioService {
 
-  private readonly urlRead = "http://localhost:8080/duenio/traer"
-  private readonly urlCreate = "http://localhost:8080/duenio/crear"
+  private readonly urlRead = "http://localhost:8080/duenio/traer";
+  private readonly urlCreate = "http://localhost:8080/duenio/crear";
+  private readonly urlDelete = "http://localhost:8080/duenio/eliminar/";
+
   
 
   duenios: Duenio[];
@@ -23,6 +25,10 @@ export class DuenioService {
 
   insertDuenio(duenio: Duenio) {
     return this.http.post<Duenio>(this.urlCreate, duenio);
+  }
+
+  deleteDuenio(idDuenio: number){
+    return this.http.delete<any>(this.urlDelete + idDuenio);
   }
 
 }

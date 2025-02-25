@@ -1,23 +1,44 @@
 <div class="d-flex">
-@for (d of duenioService.duenios; track $index) {
-    <div class="card m-3" style="width: 18rem;">
-        <div class="card-body">
-          <h3 class="card-title">{{ d.idDuenio }}: {{ d.nombre }} {{ d.apellido }}</h3>
-          <p class="card-text"> DNI: {{ d.dni }}, TEL: {{ d.celular }}</p>
-          <h4>Mascotas:</h4>
-          <div>
-              @for (m of d.listaMascotas; track $index) {
-                <div class="card w-75 mb-3">
-                    <div class="card-body">
-                      <h5 class="card-title">{{ $index + 1 }}: {{ m.nombre }}</h5>
-                      <p class="card-text">{{ m.especie }}, color {{ m.color }} </p>
-                    </div>
-                  </div>
-              }
-
+  @for (d of duenioService.duenios; track $index) {
+  <div class="card m-3" style="width: 18rem;">
+    <div class="card-body">
+      <h3 class="card-title">{{ d.idDuenio }}: {{ d.nombre }} {{ d.apellido }}</h3>
+      <p class="card-text"> DNI: {{ d.dni }}, TEL: {{ d.celular }}</p>
+      <h4>Mascotas:</h4>
+      <div>
+        @for (m of d.listaMascotas; track $index) {
+        <div class="card w-75 mb-3">
+          <div class="card-body">
+            <h5 class="card-title">{{ $index + 1 }}: {{ m.nombre }}</h5>
+            <p class="card-text">{{ m.especie }}, color {{ m.color }} </p>
           </div>
-          <a href="#" class="btn btn-success">Editar</a>
         </div>
-      </div>  
-}
+        }
+
+      </div>
+      <a href="#" class="btn btn-primary m-1">Editar</a>
+      <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
+        [attr.data-bs-target]="'#deleteModal' + d.idDuenio">Eliminar</button>
+
+      <!-- Modal -->
+      <div class="modal fade" id="deleteModal{{ d.idDuenio }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="deleteModalLabel">¿Realmente desea eliminar a {{ d.apellido }} ?</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              {{ d.nombre }} {{d.apellido}} DNI: {{d.dni}}
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+              <button (click)="deleteDuenio(d.idDuenio)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  }
 </div>
