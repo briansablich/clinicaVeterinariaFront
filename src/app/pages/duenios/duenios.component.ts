@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import Duenio from '../../models/Duenio';
+import { DuenioService } from '../../services/duenio.service';
 
 @Component({
   selector: 'app-duenios',
@@ -6,6 +8,25 @@ import { Component } from '@angular/core';
   templateUrl: './duenios.component.html',
   styleUrl: './duenios.component.css'
 })
-export class DueniosComponent {
+export class DueniosComponent implements OnInit {
+  
+  constructor(public duenioService: DuenioService){
+
+  }
+
+  ngOnInit(): void {
+    this.getDuenios();
+  }
+
+  getDuenios() {
+    this.duenioService.getDuenios().subscribe({
+      next:(data) =>{
+        this.duenioService.duenios = data;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+  }
 
 }
