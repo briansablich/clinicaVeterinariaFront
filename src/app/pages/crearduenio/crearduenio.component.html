@@ -1,1 +1,25 @@
-<p>crearduenio works!</p>
+<form [formGroup]="duenioForm" class="col-2 m-3" (submit)="insertDuenio()">
+    <div class="mb-1 w-25">
+      <label for="idduenio" class="form-label">Id</label>
+      <input readonly disabled type="number" class="form-control" id="idduenio">
+    </div>
+    <div class="mb-1">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre">
+      </div>
+      <div class="mb-1">
+        <label for="apellido" class="form-label">Apellido</label>
+        <input type="text" class="form-control" id="apellido" formControlName="apellido">
+      </div>
+      <div class="mb-1">
+        <label for="dni" class="form-label">DNI</label>
+        <input type="text" class="form-control" id="dni" formControlName="dni">
+      </div>
+      <div class="mb-1">
+        <label for="celular" class="form-label">Celular</label>
+        <input type="text" class="form-control" id="celular" formControlName="celular">
+      </div>
+      <div>
+        <input class="btn btn-success mt-3" type="submit">
+      </div>
+    </form>

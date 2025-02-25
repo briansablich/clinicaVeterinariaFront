@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import Duenio from '../../models/Duenio';
 import { DuenioService } from '../../services/duenio.service';
 
 @Component({

@@ -18,4 +18,8 @@ export class DuenioService {
     return this.http.get<Duenio[]>(this.urlRead);
   }
 
+  insertDuenio(duenio: Duenio):void {
+    console.log(duenio.nombre);
+  }
+
 }
