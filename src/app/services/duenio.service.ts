@@ -8,6 +8,9 @@ import { HttpClient } from '@angular/common/http';
 export class DuenioService {
 
   private readonly urlRead = "http://localhost:8080/duenio/traer"
+  private readonly urlCreate = "http://localhost:8080/duenio/crear"
+  
+
   duenios: Duenio[];
 
   constructor(private http: HttpClient) {
@@ -18,8 +21,8 @@ export class DuenioService {
     return this.http.get<Duenio[]>(this.urlRead);
   }
 
-  insertDuenio(duenio: Duenio):void {
-    console.log(duenio.nombre);
+  insertDuenio(duenio: Duenio) {
+    return this.http.post<Duenio>(this.urlCreate, duenio);
   }
 
 }

@@ -16,7 +16,7 @@ export class CrearduenioComponent {
   dni: FormControl;
   celular: FormControl;
 
-  constructor(private duenioService: DuenioService){
+  constructor(private duenioService: DuenioService) {
     this.nombre = new FormControl('');
     this.apellido = new FormControl('');
     this.dni = new FormControl('');
@@ -30,10 +30,16 @@ export class CrearduenioComponent {
     })
   }
 
-  insertDuenio(): void{
+  insertDuenio(): void {
     const duenio: Duenio = this.duenioForm.value;
-    console.log(duenio);
-    this.duenioService.insertDuenio(duenio);
+    this.duenioService.insertDuenio(this.duenioForm.value).subscribe({
+      next: (data) => {
+        console.log(data);
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
   }
 
 }
