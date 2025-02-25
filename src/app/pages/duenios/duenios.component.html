@@ -1,1 +1,23 @@
-<p>{{ duenioService.duenios[0].nombre }}</p>
+<div class="d-flex">
+@for (d of duenioService.duenios; track $index) {
+    <div class="card m-3" style="width: 18rem;">
+        <div class="card-body">
+          <h3 class="card-title">{{ d.idDuenio }}: {{ d.nombre }} {{ d.apellido }}</h3>
+          <p class="card-text"> DNI: {{ d.dni }}, TEL: {{ d.celular }}</p>
+          <h4>Mascotas:</h4>
+          <div>
+              @for (m of d.listaMascotas; track $index) {
+                <div class="card w-75 mb-3">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ $index + 1 }}: {{ m.nombre }}</h5>
+                      <p class="card-text">{{ m.especie }}, color {{ m.color }} </p>
+                    </div>
+                  </div>
+              }
+
+          </div>
+          <a href="#" class="btn btn-success">Editar</a>
+        </div>
+      </div>  
+}
+</div>
