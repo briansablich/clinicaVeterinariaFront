@@ -20,6 +20,6 @@
         <input type="text" class="form-control" id="celular" formControlName="celular">
       </div>
       <div>
-        <input class="btn btn-success mt-3" type="submit">
+        <input [disabled]="duenioForm.invalid" class="btn btn-success mt-3" type="submit">
       </div>
     </form>

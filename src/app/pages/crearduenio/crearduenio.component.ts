@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { DuenioService } from '../../services/duenio.service';
 import Duenio from '../../models/Duenio';
 
@@ -17,10 +17,10 @@ export class CrearduenioComponent {
   celular: FormControl;
 
   constructor(private duenioService: DuenioService) {
-    this.nombre = new FormControl('');
-    this.apellido = new FormControl('');
-    this.dni = new FormControl('');
-    this.celular = new FormControl('');
+    this.nombre = new FormControl('', Validators.required);
+    this.apellido = new FormControl('', Validators.required);
+    this.dni = new FormControl('', [Validators.required, Validators.min(0), Validators.max(100000000) ]);
+    this.celular = new FormControl('', [Validators.required, Validators.maxLength(10) ]);
 
     this.duenioForm = new FormGroup({
       nombre: this.nombre,
