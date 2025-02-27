@@ -1,1 +1,36 @@
-<p>mascotas works!</p>
+<div class="d-flex">
+    @for (m of mascotaService.mascotas; track $index) {
+    <div class="card m-3" style="width: 18rem;">
+      <div class="card-body">
+        <h3 class="card-title">{{ m.idMascota }}: {{ m.especie }}</h3>
+        <p class="card-text">Nombre: {{ m.nombre }}, Raza: {{ m.raza }}</p>
+        <p class="card-text">Color: {{ m.color }}</p>
+        <h4>Mascotas:</h4>
+        <div>  
+        </div>
+        <a href="#" class="btn btn-primary m-1">Editar</a>
+        <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
+          [attr.data-bs-target]="'#deleteModal' + m.idMascota">Eliminar</button>
+  
+        <!-- Modal -->
+        <div class="modal fade" id="deleteModal{{ m.idMascota }}" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h1 class="modal-title fs-5" id="deleteModalLabel">¿Realmente desea eliminar a {{m.idMascota}}: {{ m.nombre }} ?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              </div>
+              <div class="modal-body">
+                {{ m.especie }} {{m.raza}} Color: {{m.color}}
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cancelar</button>
+                <!-- <button (click)="deleteMascota(m.idMascota)" type="button" class="btn btn-danger" data-bs-dismiss="modal">Eliminar</button> -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    }
+  </div>
