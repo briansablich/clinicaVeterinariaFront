@@ -7,9 +7,9 @@ import { MascotaService } from '../../services/mascota.service';
   templateUrl: './mascotas.component.html',
   styleUrl: './mascotas.component.css'
 })
-export class MascotasComponent implements OnInit{
+export class MascotasComponent implements OnInit {
 
-  constructor(public mascotaService: MascotaService){
+  constructor(public mascotaService: MascotaService) {
 
   }
 
@@ -17,9 +17,9 @@ export class MascotasComponent implements OnInit{
     this.getMascotas();
   }
 
-  getMascotas(){
+  getMascotas() {
     this.mascotaService.getMascotas().subscribe({
-      next:(data) => {
+      next: (data) => {
         this.mascotaService.mascotas = data;
       },
       error: (e) => {
@@ -28,8 +28,17 @@ export class MascotasComponent implements OnInit{
     })
   }
 
-  // deleteMascota(){
-  //   this.mascotaService.
-  // }
+  deleteMascota(idMascota: number) {
+    this.mascotaService.mascotas = this.mascotaService.mascotas.filter(m => m.idMascota !== idMascota);
+    this.mascotaService.deleteMascota(idMascota).subscribe({
+      next: (data) => {
+        console.log(data);
+        this.getMascotas();
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
+  }
 
 }

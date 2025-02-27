@@ -9,7 +9,7 @@ export class MascotaService {
 
   private readonly urlRead = "http://localhost:8080/mascotas/traer";
   private readonly urlCreate = "http://localhost:8080/mascotas/crear";
-  //private readonly urlCreate = "http://localhost:8080/mascotas/crear";
+  private readonly urlDelete = "http://localhost:8080/mascotas/eliminar/";
 
   mascotas: Mascota[];
 
@@ -26,7 +26,7 @@ export class MascotaService {
   }
 
   deleteMascota(idMascota: number){
-
+    return this.http.delete<any>(this.urlDelete + idMascota)
   }
 
 }
