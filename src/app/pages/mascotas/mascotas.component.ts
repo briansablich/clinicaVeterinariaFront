@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { MascotaService } from '../../services/mascota.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-mascotas',
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './mascotas.component.html',
   styleUrl: './mascotas.component.css'
 })

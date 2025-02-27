@@ -9,7 +9,7 @@ import { HomeComponent } from './pages/home/home.component';
 export const routes: Routes = [
     {path: 'duenios', component: DueniosComponent},
     {path: 'mascotas', component: MascotasComponent},
-    {path: 'mascotas/detalle', component: MascotadetalleComponent},
+    {path: 'mascotas/:id', component: MascotadetalleComponent},
     {path: 'crearmascota', component: CrearmascotaComponent},
     {path: 'crearduenio', component: CrearduenioComponent},
     {path: '', component: HomeComponent}

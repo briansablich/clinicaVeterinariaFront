@@ -3,6 +3,7 @@ import Mascota from '../models/Mascota';
 import { HttpClient } from '@angular/common/http';
 import Duenio from '../models/Duenio';
 import { DuenioService } from './duenio.service';
+import MascoDuenioDTO from '../models/MascoDuenioDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -12,6 +13,7 @@ export class MascotaService {
   private readonly urlRead = "http://localhost:8080/mascotas/traer";
   private readonly urlCreate = "http://localhost:8080/mascotas/crear";
   private readonly urlDelete = "http://localhost:8080/mascotas/eliminar/";
+  private readonly urlReadMascoDuenio = "http://localhost:8080/mascotas/traerporid?idmascota=";
 
   mascotas: Mascota[];
   duenios: Duenio[];
@@ -20,7 +22,7 @@ export class MascotaService {
     this.mascotas = [];
     this.duenios = [];
     this.duenioService.getDuenios().subscribe({
-      next:(dataDuenio) => {
+      next: (dataDuenio) => {
         this.duenios = dataDuenio;
       },
       error: (e) => {
@@ -30,7 +32,6 @@ export class MascotaService {
   }
 
   getMascotas() {
-
     return this.http.get<Mascota[]>(this.urlRead);
   }
 
@@ -38,8 +39,12 @@ export class MascotaService {
     return this.http.post(this.urlCreate, mascota);
   }
 
-  deleteMascota(idMascota: number){
+  deleteMascota(idMascota: number) {
     return this.http.delete<any>(this.urlDelete + idMascota)
+  }
+
+  getMascoDuenioDTO(idMascota: number){
+    return this.http.get<MascoDuenioDTO>(this.urlReadMascoDuenio + idMascota);
   }
 
 }

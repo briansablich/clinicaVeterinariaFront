@@ -1,1 +1,8 @@
-<p>mascotadetalle works!</p>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title">{{ mascoDuenioDTO.nombreDuenio }} {{ mascoDuenioDTO.apellidoDuenio }}</h5>
+      <h6 class="card-subtitle mb-2 text-body-secondary">Mascota: {{ mascoDuenioDTO.nombreMascota }}</h6>
+      <p class="card-text">Especie: {{ mascoDuenioDTO.especie }}, Raza: {{ mascoDuenioDTO.raza }} </p>
+      <a routerLink="/mascotas" class="card-link">Volver</a>
+    </div>
+  </div>
