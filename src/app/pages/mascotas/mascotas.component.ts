@@ -26,6 +26,20 @@ export class MascotasComponent implements OnInit {
         console.log(e);
       }
     })
+
+    this.mascotaService.duenios.forEach(d => {
+      d.listaMascotas.forEach(mascota => {
+        this.mascotaService.mascotas.forEach(m => {
+          if (m.idMascota === mascota.idMascota) {
+            m.duenio = { idDuenio: d.idDuenio, nombre: d.nombre, apellido: d.apellido, celular: d.celular, dni: d.dni, listaMascotas: [] };
+
+            mascota.duenio = d;
+
+            console.log(d.apellido);
+          }
+        });
+      });
+    });
   }
 
   deleteMascota(idMascota: number) {

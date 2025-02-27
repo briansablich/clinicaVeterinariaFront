@@ -1,1 +1,26 @@
-<p>crearmascota works!</p>
+<form [formGroup]="mascotaForm" class="col-2 m-3" (submit)="insertMascota()">
+    <div class="mb-1 w-25">
+      <label for="idmascota" class="form-label">Id</label>
+      <input readonly disabled type="number" class="form-control" id="idmascota">
+    </div>
+    <div class="mb-1">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input type="text" class="form-control" id="nombre" formControlName="nombre">
+      </div>
+      <div class="mb-1">
+        <label for="especie" class="form-label">Especie</label>
+        <input type="text" class="form-control" id="especie" formControlName="especie">
+      </div>
+      <div class="mb-1">
+        <label for="raza" class="form-label">Raza</label>
+        <input type="text" class="form-control" id="raza" formControlName="raza">
+      </div>
+      <div class="mb-1">
+        <label for="color" class="form-label">Color</label>
+        <input type="text" class="form-control" id="color" formControlName="color">
+      </div>
+      <div>
+        <input [disabled]="mascotaForm.invalid" class="btn btn-success mt-3" type="submit">
+      </div>
+    </form>
+

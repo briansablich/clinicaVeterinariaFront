@@ -10,6 +10,7 @@ export class DuenioService {
   private readonly urlRead = "http://localhost:8080/duenio/traer";
   private readonly urlCreate = "http://localhost:8080/duenio/crear";
   private readonly urlDelete = "http://localhost:8080/duenio/eliminar/";
+  private readonly urlReadForId = "http://localhost:8080/duenio/traer/";
 
   
 
@@ -21,6 +22,10 @@ export class DuenioService {
 
   getDuenios() {
     return this.http.get<Duenio[]>(this.urlRead);
+  }
+
+  getDuenioId(idDuenio: number){
+    return this.http.get(this.urlReadForId + idDuenio);
   }
 
   insertDuenio(duenio: Duenio) {
