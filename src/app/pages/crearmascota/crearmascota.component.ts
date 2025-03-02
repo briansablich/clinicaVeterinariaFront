@@ -38,6 +38,7 @@ export class CrearmascotaComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
+      console.log(params.get('idmascota'));
       if(params.get('idmascota')){
         this.idMascotaTraer = Number(params.get('idmascota'));
         this.getMascotaPorId(this.idMascotaTraer);
@@ -46,7 +47,6 @@ export class CrearmascotaComponent implements OnInit {
   }
 
   insertMascota(): void {
-    console.log(this.mascotaForm.value);
     this.mascotaService.insertMascota(this.mascotaForm.value).subscribe({
       next: (mascotaData) => {
         console.log(mascotaData);
