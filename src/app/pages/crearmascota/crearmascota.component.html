@@ -1,26 +1,35 @@
 <form [formGroup]="mascotaForm" class="col-2 m-3" (submit)="insertMascota()">
-    <div class="mb-1 w-25">
-      <label for="idMascota" class="form-label">Id</label>
-      <input readonly type="number" class="form-control" id="idMascota" formControlName="idMascota">
-    </div>
-    <div class="mb-1">
-        <label for="nombre" class="form-label">Nombre</label>
-        <input type="text" class="form-control" id="nombre" formControlName="nombre">
-      </div>
-      <div class="mb-1">
-        <label for="especie" class="form-label">Especie</label>
-        <input type="text" class="form-control" id="especie" formControlName="especie">
-      </div>
-      <div class="mb-1">
-        <label for="raza" class="form-label">Raza</label>
-        <input type="text" class="form-control" id="raza" formControlName="raza">
-      </div>
-      <div class="mb-1">
-        <label for="color" class="form-label">Color</label>
-        <input type="text" class="form-control" id="color" formControlName="color">
-      </div>
-      <div>
-        <input [disabled]="mascotaForm.invalid" class="btn btn-success mt-3" type="submit">
-      </div>
-    </form>
-
+  <div class="mb-1 w-25">
+    <label for="idMascota" class="form-label">Id</label>
+    <input readonly type="number" class="form-control" id="idMascota" formControlName="idMascota">
+  </div>
+  <div class="mb-1">
+    <label for="nombre" class="form-label">Nombre</label>
+    <input type="text" class="form-control" id="nombre" formControlName="nombre">
+  </div>
+  <div class="mb-1">
+    <label for="especie" class="form-label">Especie</label>
+    <input type="text" class="form-control" id="especie" formControlName="especie">
+  </div>
+  <div class="mb-1">
+    <label for="raza" class="form-label">Raza</label>
+    <input type="text" class="form-control" id="raza" formControlName="raza">
+  </div>
+  <div class="mb-1">
+    <label for="color" class="form-label">Color</label>
+    <input type="text" class="form-control" id="color" formControlName="color">
+  </div>
+  <div class="mb-1">
+    <label for="ddlDuenios" class="form-label">Dueño</label>
+    <select class="form-select w-50" id="ddlDuenios" formControlName="duenio">
+      @for (d of duenios; track $index) {
+      <option class="dropdown-item" [value]="d.idDuenio">
+        {{d.idDuenio}}: {{d.apellido}} {{ d.nombre}}
+      </option>
+      }
+    </select>
+  </div>
+  <div>
+    <input [disabled]="mascotaForm.invalid" class="btn btn-success mt-3" type="submit" id="btnsubmit">
+  </div>
+</form>

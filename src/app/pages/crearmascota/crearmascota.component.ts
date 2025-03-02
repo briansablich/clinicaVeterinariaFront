@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MascotaService } from '../../services/mascota.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import Mascota from '../../models/Mascota';
+import { DuenioService } from '../../services/duenio.service';
+import Duenio from '../../models/Duenio';
 
 @Component({
   selector: 'app-crearmascota',
@@ -18,9 +19,13 @@ export class CrearmascotaComponent implements OnInit {
   raza: FormControl;
   color: FormControl;
   idMascotaTraer: number | null = null;
+  duenios: Duenio[] = [];
 
 
-  constructor(private mascotaService: MascotaService, private router: Router, private route: ActivatedRoute) {
+  constructor(private mascotaService: MascotaService,
+    private route: ActivatedRoute,
+    private duenioService: DuenioService,) {
+
     this.idMascota = new FormControl();
     this.nombre = new FormControl('', Validators.required);
     this.especie = new FormControl('', Validators.required);
@@ -32,18 +37,21 @@ export class CrearmascotaComponent implements OnInit {
       nombre: this.nombre,
       especie: this.especie,
       raza: this.raza,
-      color: this.color
+      color: this.color,
+      duenio: new FormControl({
+        idDuenio: new FormControl()
+      })
     })
   }
 
   ngOnInit(): void {
     this.route.queryParamMap.subscribe(params => {
-      console.log(params.get('idmascota'));
-      if(params.get('idmascota')){
+      if (params.get('idmascota')) {
         this.idMascotaTraer = Number(params.get('idmascota'));
         this.getMascotaPorId(this.idMascotaTraer);
       }
     });
+    this.getDuenios();
   }
 
   insertMascota(): void {
@@ -55,6 +63,7 @@ export class CrearmascotaComponent implements OnInit {
         console.log(e);
       }
     })
+    console.log(this.mascotaForm.value)
     this.mascotaForm.reset();
   }
 
@@ -71,6 +80,17 @@ export class CrearmascotaComponent implements OnInit {
         console.log("Error al obtener la mascota:", e);
       }
     });
+  }
+
+  getDuenios(){
+    this.duenioService.getDuenios().subscribe({
+      next: (data) => {
+        this.duenios = data;
+      },
+      error: (e) => {
+        console.log(e);
+      }
+    })
   }
 
 }
