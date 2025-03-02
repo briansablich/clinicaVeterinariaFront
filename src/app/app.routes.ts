@@ -11,6 +11,7 @@ export const routes: Routes = [
     {path: 'mascotas', component: MascotasComponent},
     {path: 'mascotas/:id', component: MascotadetalleComponent},
     {path: 'crearmascota', component: CrearmascotaComponent},
+    {path: 'crearmascota/:idmascota', component: CrearmascotaComponent},
     {path: 'crearduenio', component: CrearduenioComponent},
     {path: '', component: HomeComponent}
 ];

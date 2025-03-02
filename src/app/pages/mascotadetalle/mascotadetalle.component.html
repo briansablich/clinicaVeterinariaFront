@@ -1,8 +1,10 @@
-<div class="card" style="width: 18rem;">
-    <div class="card-body">
-      <h5 class="card-title">{{ mascoDuenioDTO.nombreDuenio }} {{ mascoDuenioDTO.apellidoDuenio }}</h5>
-      <h6 class="card-subtitle mb-2 text-body-secondary">Mascota: {{ mascoDuenioDTO.nombreMascota }}</h6>
-      <p class="card-text">Especie: {{ mascoDuenioDTO.especie }}, Raza: {{ mascoDuenioDTO.raza }} </p>
-      <a routerLink="/mascotas" class="card-link">Volver</a>
+<div class="col-4 d-flex">
+  <div class="card m-4" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Duenio: {{ mascoDuenioDTO.nombreDuenio }} {{ mascoDuenioDTO.apellidoDuenio }}</h5>
+        <h6 class="card-subtitle mb-2 ">Mascota: {{ mascoDuenioDTO.nombreMascota }}</h6>
+        <p class="card-text">Especie: {{ mascoDuenioDTO.especie }}, Raza: {{ mascoDuenioDTO.raza }} </p>
+        <a routerLink="/mascotas" class="btn btn-primary">Volver</a>
+      </div>
     </div>
-  </div>
+</div>

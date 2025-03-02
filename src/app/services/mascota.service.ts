@@ -14,6 +14,7 @@ export class MascotaService {
   private readonly urlCreate = "http://localhost:8080/mascotas/crear";
   private readonly urlDelete = "http://localhost:8080/mascotas/eliminar/";
   private readonly urlReadMascoDuenio = "http://localhost:8080/mascotas/traerporid?idmascota=";
+  private readonly urlReadMascotaPorId = "http://localhost:8080/mascotas/traermascotaporid?idmascota=";
 
   mascotas: Mascota[];
   duenios: Duenio[];
@@ -45,6 +46,10 @@ export class MascotaService {
 
   getMascoDuenioDTO(idMascota: number){
     return this.http.get<MascoDuenioDTO>(this.urlReadMascoDuenio + idMascota);
+  }
+
+  getMascotaPorId(idmascota: number){
+    return this.http.get<Mascota>(this.urlReadMascotaPorId + idmascota);
   }
 
 }
