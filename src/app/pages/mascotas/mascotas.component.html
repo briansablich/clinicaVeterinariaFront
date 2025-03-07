@@ -9,7 +9,7 @@
         <h4>Mascotas:</h4>
         <div>  
         </div>
-        <a [routerLink]="['/mascotas/', m.idMascota]" class="btn btn-success m-1">Detalle</a>
+        <!-- <a [routerLink]="['/mascotas/', m.idMascota]" class="btn btn-success m-1">Detalle</a> -->
         <a [routerLink]="['/crearmascota']" [queryParams]="{ idmascota: m.idMascota}" class="btn btn-primary m-1">Editar</a>
         <button type="button" class="btn btn-danger m-1" data-bs-toggle="modal"
           [attr.data-bs-target]="'#deleteModal' + m.idMascota">Eliminar</button>
